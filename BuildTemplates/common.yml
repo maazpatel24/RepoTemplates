@@ -1,0 +1,14 @@
+# Repo: RepoTemplates/BuildTemplates
+# File: common.yml
+parameters:
+- name: 'vmImage'
+  default: 'ubuntu-22.04'
+  type: string
+
+jobs:
+- job: Build
+  pool:
+    vmImage: ${{ parameters.vmImage }}
+  steps:
+  - script: echo 'npm install'
+  - script: echo 'npm test'
