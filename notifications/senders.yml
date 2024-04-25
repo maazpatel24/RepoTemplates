@@ -1,0 +1,13 @@
+parameters:
+- name: message
+  default: "Hello world"
+  type: string
+- name: senders
+  default: []
+  type: object
+
+jobs:
+- job: SendNotificationToTeams
+  steps:
+  - ${{ each sender in parameters.senders }}:
+    - script: echo ${{ parameters.message }} ${{ sender}}
