@@ -1,19 +1,25 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
+resources: 
+  webhooks:
+    - webhook: MyWebHook
+      connection: WebHook-connection
 
-trigger:
-- main
+  repositories:
+    - repository: notification
+      type: github
+      name: maazpatel24/core-templates
+      endpoint: maazpatel24-connection
+      ref: main
+      
+trigger: none
 
 pool:
   vmImage: ubuntu-latest
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
-
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+jobs:
+  - template: notifications/senders.yml@notification
+    parameters:
+      message: "Hello world Maaz"
+      senders:
+      - Slack
+      - MSTeams
+      - OutLook
