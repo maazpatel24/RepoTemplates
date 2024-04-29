@@ -18,7 +18,6 @@ pool:
 stages:
 - stage: Build
   displayName: Stage 1
-  condition: ne(variables['Build.SourceBranch'], 'refs/heads/main')
   jobs:
   - template: notifications/senders.yml@notification
     parameters:
