@@ -10,12 +10,23 @@ resources:
       endpoint: maazpatel24-connection
       ref: main
       
-trigger: none
+trigger:
+  branches:
+    include:
+      - main
+    exclude:
+      - 'refs/heads/main'
+  paths:
+    exclude:
+      - '*'
 
 pool:
   vmImage: ubuntu-latest
 
-jobs:
+stages:
+- stage: Build
+  displayName: Stage 1
+  jobs:
   - template: notifications/senders.yml@notification
     parameters:
       message: "Hello world Maaz"
