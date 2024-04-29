@@ -22,13 +22,20 @@ pool:
 stages:
 - stage: Build
   displayName: Stage 1 
-  condition: eq( '$(repoName)', '$(Build.Repository.Name)')
+  # condition: eq( '$(repoName)', '$(Build.Repository.Name)')
 
   jobs:
-  - template: notifications/senders.yml@notification
-    parameters:
-      message: "Hello world Maaz"
-      senders:
-      - Slack
-      - MSTeams
-      - OutLook
+  - job: 
+    steps:  
+      - script: |
+          # echo ${{ parameters.MyWebHook.ref }}
+          echo $(branchRef)
+          echo $(repoName)
+          echo $(Build.Repository.Name)
+  # - template: notifications/senders.yml@notification
+  #   parameters:
+  #     message: "Hello world Maaz"
+  #     senders:
+  #     - Slack
+  #     - MSTeams
+  #     - OutLook
