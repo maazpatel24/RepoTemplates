@@ -12,6 +12,10 @@ resources:
       
 trigger: none
 
+variables:
+  branchRef: '${{ parameters.MyWebHook.ref }}'
+  repoName: '${{ parameters.MyWebHook.repository.full_name }}'
+
 pool:
   vmImage: ubuntu-latest
 
