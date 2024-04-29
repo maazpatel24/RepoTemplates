@@ -10,15 +10,7 @@ resources:
       endpoint: maazpatel24-connection
       ref: main
       
-trigger:
-  branches:
-    include:
-      - main
-    exclude:
-      - 'refs/heads/main'
-  paths:
-    exclude:
-      - '*'
+trigger: none
 
 pool:
   vmImage: ubuntu-latest
