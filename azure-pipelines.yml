@@ -22,7 +22,7 @@ pool:
 stages:
 - stage: Build
   displayName: Stage 1 
-  condition: eq( '$(repoName)', '$(Build.Repository.Name)')
+  condition: ne( '$(repoName)', '$(Build.Repository.Name)')
 
   jobs:
   - job: 
