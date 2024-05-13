@@ -1,13 +1,13 @@
 resources: 
   webhooks:
     - webhook: MyWebHook
-      connection: WebHook-connection
+      connection: WebHook-connection  # Service connection name
 
   repositories:
     - repository: notification
       type: github
       name: maazpatel24/core-templates
-      endpoint: maazpatel24-connection
+      endpoint: maazpatel24-connection  # Service connection name
       ref: main
       
 trigger: none
